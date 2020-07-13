@@ -27,7 +27,6 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     async function loadFoods(): Promise<void> {
-      // TODO LOAD FOODS
       api.get('/foods').then(response => {
         setFoods(response.data)
       })
@@ -40,7 +39,9 @@ const Dashboard: React.FC = () => {
     food: Omit<IFoodPlate, 'id' | 'available'>,
   ): Promise<void> {
     try {
-      // TODO ADD A NEW FOOD PLATE TO THE API
+      const response = await api.post('/foods', { ...food, available: true })
+
+      setFoods(state => [...state, response.data])
     } catch (err) {
       console.log(err)
     }
