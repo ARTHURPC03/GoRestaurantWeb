@@ -1,37 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-import Header from '../../components/Header';
+import Header from '../../components/Header'
 
-import api from '../../services/api';
+import api from '../../services/api'
 
-import Food from '../../components/Food';
-import ModalAddFood from '../../components/ModalAddFood';
-import ModalEditFood from '../../components/ModalEditFood';
+import Food from '../../components/Food'
+import ModalAddFood from '../../components/ModalAddFood'
+import ModalEditFood from '../../components/ModalEditFood'
 
-import { FoodsContainer } from './styles';
+import { FoodsContainer } from './styles'
 
 interface IFoodPlate {
-  id: number;
-  name: string;
-  image: string;
-  price: string;
-  description: string;
-  available: boolean;
+  id: number
+  name: string
+  image: string
+  price: string
+  description: string
+  available: boolean
 }
 
 const Dashboard: React.FC = () => {
-  const [foods, setFoods] = useState<IFoodPlate[]>([]);
-  const [editingFood, setEditingFood] = useState<IFoodPlate>({} as IFoodPlate);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [foods, setFoods] = useState<IFoodPlate[]>([])
+  const [editingFood, setEditingFood] = useState<IFoodPlate>({} as IFoodPlate)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [editModalOpen, setEditModalOpen] = useState(false)
 
   useEffect(() => {
     async function loadFoods(): Promise<void> {
       // TODO LOAD FOODS
     }
 
-    loadFoods();
-  }, []);
+    loadFoods()
+  }, [])
 
   async function handleAddFood(
     food: Omit<IFoodPlate, 'id' | 'available'>,
@@ -39,7 +39,7 @@ const Dashboard: React.FC = () => {
     try {
       // TODO ADD A NEW FOOD PLATE TO THE API
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
 
@@ -54,11 +54,11 @@ const Dashboard: React.FC = () => {
   }
 
   function toggleModal(): void {
-    setModalOpen(!modalOpen);
+    setModalOpen(!modalOpen)
   }
 
   function toggleEditModal(): void {
-    setEditModalOpen(!editModalOpen);
+    setEditModalOpen(!editModalOpen)
   }
 
   function handleEditFood(food: IFoodPlate): void {
@@ -92,7 +92,7 @@ const Dashboard: React.FC = () => {
           ))}
       </FoodsContainer>
     </>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
